@@ -17,6 +17,13 @@ bell:'<path d="M6 16.5V11a6 6 0 0 1 12 0v5.5l1.5 2h-15zM10 21a2 2 0 0 0 4 0"/>',
 reset:'<path d="M4.5 12a7.5 7.5 0 1 0 2.4-5.5M4 4v4.5h4.5"/>',
 clock:'<circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/>',
 type:'<path d="M4 18 9 5l5 13M5.8 14h6.4M15.5 18l3-8 2.5 8M16.6 15.5h3.8"/>',
+star:'<path d="M12 2.8l2.2 5 5.4-1.4-1.4 5.4 5 2.2-5 2.2 1.4 5.4-5.4-1.4-2.2 5-2.2-5-5.4 1.4 1.4-5.4-5-2.2 5-2.2-1.4-5.4 5.4 1.4z" transform="translate(0 -1.2) scale(.92) translate(1 1.4)"/>',
+flame:'<path d="M12 21c4 0 6.5-2.6 6.5-6.2 0-2.6-1.5-4.4-3-6-.5 1.4-1.4 2.2-2.5 2.6.4-3.4-1-6.2-3.6-8.4.2 3-1.2 4.8-2.7 6.7-1 1.3-1.7 2.7-1.7 4.3C5.5 18.4 8 21 12 21z"/>',
+chart:'<path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>',
+cal:'<rect x="3.5" y="5" width="17" height="15.5" rx="3"/><path d="M3.5 10h17M8 3v4M16 3v4"/>',
+pin:'<path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.400-6.500 11-6.500 11z"/><circle cx="12" cy="10" r="2.300"/>',
+dl:'<path d="M12 3.500V15M7.500 11 12 15.500 16.500 11M5 20h14"/>',
+plus:'<path d="M12 5v14M5 12h14"/>',
 copy:'<rect x="8.5" y="8.5" width="11" height="11" rx="2.5"/><path d="M15.5 8.5V6A2.5 2.5 0 0 0 13 3.5H6A2.5 2.5 0 0 0 3.5 6v7A2.5 2.5 0 0 0 6 15.5h2.5"/>'};
 return function(n,s,c){return '<svg class="i '+(c||'')+'" width="'+(s||24)+'" height="'+(s||24)+'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">'+P[n]+'</svg>'}})();
-var CATIC={morning:'sunrise',evening:'sunset',prayer:'mosque',sleep:'moon',wake:'sun',daily:'book',tasbih:'beads'};
+var CATIC={quran:'book',khatm:'star',morning:'sunrise',evening:'sunset',prayer:'mosque',sleep:'moon',wake:'sun',daily:'book',tasbih:'beads'};
