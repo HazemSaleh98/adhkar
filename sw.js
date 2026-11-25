@@ -1,0 +1,6 @@
+var C='adhkar-v1';
+self.addEventListener('install',function(e){e.waitUntil(caches.open(C).then(function(c){return c.addAll(['./','index.html','style.css?v=1','data.js?v=1','app.js?v=1','manifest.webmanifest','icons/icon-192.png'])}));self.skipWaiting()});
+self.addEventListener('activate',function(e){e.waitUntil(caches.keys().then(function(k){return Promise.all(k.filter(function(x){return x!==C}).map(function(x){return caches.delete(x)}))}).then(function(){return clients.claim()}))});
+self.addEventListener('fetch',function(e){if(e.request.method!=='GET')return;e.respondWith(caches.match(e.request,{ignoreSearch:false}).then(function(r){return r||fetch(e.request).then(function(n){var cp=n.clone();caches.open(C).then(function(c){c.put(e.request,cp)});return n})}))});
+self.addEventListener('push',function(e){var d={};try{d=e.data.json()}catch(x){}e.waitUntil(self.registration.showNotification(d.title||'أذكار',{body:d.body||'',icon:'icons/icon-192.png',dir:'rtl',lang:'ar',tag:d.tag||'adhkar'}))});
+self.addEventListener('notificationclick',function(e){e.notification.close();e.waitUntil(clients.matchAll({type:'window'}).then(function(l){if(l.length)return l[0].focus();return clients.openWindow('./')}))});
