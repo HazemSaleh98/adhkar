@@ -65,13 +65,17 @@ export async function handle(req, env, now = Date.now()) {
   return json(env, { ok: true, id, token });
 }
 const MAX_FAIL = 10, STALE_MS = 30 * 864e5;
+// Free plan allows 10 ms CPU per run (~3 ms per push): cap pushes per run, the rest stay due and go next minute.
+const MAX_PER_RUN = 2;
 export async function runCron(env, now = Date.now(), send = sendPush) {
   const { results } = await env.DB.prepare('SELECT * FROM subs').all();
-  let sent = 0;
+  let sent = 0, attempts = 0;
   for (const r of results) {
     if (r.fail >= MAX_FAIL || now - r.last_ok_ms > STALE_MS) { await env.DB.prepare('DELETE FROM subs WHERE id=?').bind(r.id).run(); continue; }
     const s = { tz: r.tz, interval: r.interval, from: r.win_from, to: r.win_to, fixed: JSON.parse(r.fixed || '[]'), last_sent_ms: r.last_sent_ms };
     const d = isDue(s, now); if (!d.due) continue;
+    if (attempts >= MAX_PER_RUN) break;
+    attempts++;
     let st = 0;
     try { st = await send({ endpoint: r.endpoint, p256dh: r.p256dh, auth: r.auth }, { title: 'أذكار', body: PHRASES[Math.floor(now / 60000) % PHRASES.length], tag: 'adhkar-' + d.kind }, env); } catch { st = 0; }
     if (st === 404 || st === 410) await env.DB.prepare('DELETE FROM subs WHERE id=?').bind(r.id).run();
