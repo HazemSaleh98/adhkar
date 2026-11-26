@@ -77,7 +77,7 @@ export async function runCron(env, now = Date.now(), send = sendPush) {
     if (attempts >= MAX_PER_RUN) break;
     attempts++;
     let st = 0;
-    try { st = await send({ endpoint: r.endpoint, p256dh: r.p256dh, auth: r.auth }, { title: 'أذكار', body: PHRASES[Math.floor(now / 60000) % PHRASES.length], tag: 'adhkar-' + d.kind }, env); } catch { st = 0; }
+    try { st = await send({ endpoint: r.endpoint, p256dh: r.p256dh, auth: r.auth }, { title: d.kind === 'fixed' ? 'حان موعد أذكارك' : 'اذكر الله', body: PHRASES[Math.floor(now / 60000) % PHRASES.length], tag: 'adhkar-' + d.kind }, env); } catch { st = 0; }
     if (st === 404 || st === 410) await env.DB.prepare('DELETE FROM subs WHERE id=?').bind(r.id).run();
     else if (st >= 200 && st < 300) { sent++; await env.DB.prepare('UPDATE subs SET last_sent_ms=?,last_ok_ms=?,fail=0 WHERE id=?').bind(now, now, r.id).run(); }
     else await env.DB.prepare('UPDATE subs SET fail=fail+1,last_sent_ms=? WHERE id=?').bind(now, r.id).run();

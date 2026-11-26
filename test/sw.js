@@ -1,8 +1,8 @@
-var C='adhkar-test-v6';
+var C='adhkar-test-v7';
 self.addEventListener('install',function(e){e.waitUntil(caches.open(C).then(function(c){return Promise.all(['./','index.html','fonts.css?v=13','style.css?v=13','data.js?v=13','prayer.js?v=13','icons.js?v=13','push.js?v=13','app.js?v=13','manifest.webmanifest','icons/icon-192.png','icons/icon-180.png','fonts/Amiri-400-arabic.woff','fonts/Amiri-700-arabic.woff','fonts/IBMPlexSansArabic-400-arabic.woff','fonts/IBMPlexSansArabic-500-arabic.woff','fonts/IBMPlexSansArabic-600-arabic.woff'].map(function(u){return fetch(new Request(u,{cache:'reload'})).then(function(r){if(!r.ok)throw 0;return c.put(u,r)})}))}));self.skipWaiting()});
 self.addEventListener('activate',function(e){e.waitUntil(caches.keys().then(function(k){return Promise.all(k.filter(function(x){return x!==C&&x.indexOf('adhkar-test')===0}).map(function(x){return caches.delete(x)}))}).then(function(){return clients.claim()}))});
 self.addEventListener('fetch',function(e){var r=e.request;if(r.method!=='GET')return;
  if(r.mode==='navigate'){e.respondWith(fetch(r,{cache:'no-cache'}).then(function(n){var cp=n.clone();caches.open(C).then(function(c){c.put('index.html',cp)});return n}).catch(function(){return caches.match('index.html')}));return}
  e.respondWith(caches.match(r).then(function(h){return h||fetch(r).then(function(n){var cp=n.clone();caches.open(C).then(function(c){c.put(r,cp)});return n})}))});
-self.addEventListener('push',function(e){var d={};try{d=e.data.json()}catch(x){}e.waitUntil(self.registration.showNotification(d.title||'أذكار',{body:d.body||'',icon:'icons/icon-192.png',dir:'rtl',lang:'ar',tag:d.tag||'adhkar'}))});
+self.addEventListener('push',function(e){var d={};try{d=e.data.json()}catch(x){}e.waitUntil(self.registration.showNotification(d.title||'اذكر الله',{body:d.body||'',icon:'icons/icon-192.png',dir:'rtl',lang:'ar',tag:d.tag||'adhkar'}))});
 self.addEventListener('notificationclick',function(e){e.notification.close();e.waitUntil(clients.matchAll({type:'window'}).then(function(l){if(l.length)return l[0].focus();return clients.openWindow('./')}))});

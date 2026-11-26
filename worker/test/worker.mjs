@@ -53,7 +53,7 @@ sq.exec('DELETE FROM subs'); const t = Date.UTC(2026, 10, 26, 10, 0);
 const s1 = await ck(await post('/subscribe', { subscription: sub('p'), settings: { interval: 1, from: '00:00', to: '23:59' } }), 200);
 const calls = [];
 assert.equal(await runCron(env, t, async (s, p) => { calls.push(p); return 201; }), 1);
-assert.deepEqual(Object.keys(calls[0]).sort(), ['body', 'tag', 'title']); assert.equal(calls[0].title, 'أذكار');
+assert.deepEqual(Object.keys(calls[0]).sort(), ['body', 'tag', 'title']); assert.equal(calls[0].title, 'اذكر الله');
 assert.equal(await runCron(env, t + 30000, async () => 201), 0);
 assert.equal(await runCron(env, t + 60000, async () => 201), 1);
 console.log('PASS cron: generic payload (title أذكار + dhikr), cadence');
