@@ -117,7 +117,7 @@ function setView(){var iv=S.iv;
  '<div class="sec">الاسم</div><div class="list st">'+row('heart','اسمك (اختياري)','<input type="text" data-k="name" maxlength="20" placeholder="مثلاً حازم" value="'+esc(S.name||'').replace(/"/g,'&quot;')+'" style="width:48%">')+'</div><p class="note">يظهر في التحية وفي عنوان الإشعارات. محفوظ على جهازك فقط.</p>'+
  '<div class="sec">المدينة</div><div class="list st">'+row('pin','مواقيت الصلاة','<select data-city="1">'+CITIES.map(function(x){return '<option value="'+x[0]+'"'+(x[0]===S.city?' selected':'')+'>'+x[1]+'</option>'}).join('')+'</select>')+'</div>'+
  '<div class="sec">المظهر</div><div class="list st">'+row('moon','الوضع الليلي',sw('dark',S.dark))+row('type','حجم الخط','<input type="range" min="22" max="40" value="'+S.fs+'" data-k="fs">')+'</div>'+
- '<p class="note" style="text-align:center;margin-top:0">نسخة ٩ تجريبية · © Hazem Saleh</p>'}
+ '<p class="note" style="text-align:center;margin-top:0">نسخة ١٠ تجريبية · © Hazem Saleh</p>'}
 function ivStatus(){var st=(navigator.standalone||matchMedia('(display-mode: standalone)').matches),h;
  h=st?'التطبيق مثبّت على الشاشة الرئيسية.':'أنت فاتح من Safari: التنبيهات هتظهر جوه الصفحة بس، وللتنبيهات برا الصفحة لازم تضيف التطبيق للشاشة الرئيسية.';
  if(S.iv.on){var w=S.next?new Date(S.next):null;h='التذكير القادم: '+(w?an(p2(w.getHours()))+':'+an(p2(w.getMinutes())):'خلال لحظات')+'. '+h}
@@ -196,6 +196,7 @@ function tick(){applyWL();var n=new Date(),m=n.getHours()*60+n.getMinutes(),k=to
   else if(!inW&&Date.now()>=S.next){S.next=Date.now()+iv.min*6e4;save()}}}
 setInterval(tick,15000);document.addEventListener('visibilitychange',function(){if(!document.hidden)tick()});
 ['gesturestart','gesturechange','gestureend'].forEach(function(n){[document,window,document.body].forEach(function(t){t.addEventListener(n,function(e){e.preventDefault()},{passive:false})})});document.addEventListener('touchstart',function(e){if(e.touches.length>1)e.preventDefault()},{passive:false});document.addEventListener('touchmove',function(e){if(e.touches.length>1)e.preventDefault()},{passive:false});
+window.addEventListener('storage',function(e){if(e.key===KEY&&e.newValue){try{var n=JSON.parse(e.newValue);Object.keys(n).forEach(function(k){S[k]=n[k]})}catch(x){}}});
 window.__adhkar={tick:tick,S:S,notify:notify};
 render();tick();
 })();
