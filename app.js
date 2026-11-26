@@ -3,7 +3,7 @@ var $=function(s){return document.querySelector(s)};
 var KEY='adhkar.v2';
 var S=load();
 function load(){var d={};try{d=JSON.parse(localStorage.getItem(KEY))||{}}catch(e){}
- return Object.assign({fav:{},prog:{},tt:33,fs:30,dark:false,tas:0,m:{on:true,t:'05:30'},e:{on:true,t:'17:00'},iv:{on:false,min:15,from:'08:00',to:'22:00'},fired:{},next:0,city:'cairo',hist:{},total:0,ctr:{ist:{d:'',n:0,g:100},sal:{d:'',n:0,g:100}},pr:{on:false},tm:'free'},d)}
+ return Object.assign({fav:{},prog:{},tt:33,fs:30,dark:false,tas:0,m:{on:true,t:'05:30'},e:{on:true,t:'17:00'},iv:{on:false,min:15,from:'08:00',to:'22:00'},fired:{},next:0,city:'cairo',name:'',hist:{},total:0,ctr:{ist:{d:'',n:0,g:100},sal:{d:'',n:0,g:100}},pr:{on:false},tm:'free'},d)}
 function save(){localStorage.setItem(KEY,JSON.stringify(S))}
 function dkey(d){return d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate()}
 function today(){return dkey(new Date())}
@@ -15,7 +15,9 @@ function dayP(){if(!S.prog[today()])S.prog={},S.prog[today()]={};return S.prog[t
 function cnt(cat,id){return (dayP()[cat+'|'+id])||0}
 function list(c){return c==='fav'?DH.filter(function(d){return S.fav[d.id]}):DH.filter(function(d){return d.c.indexOf(c)>=0})}
 function catProg(c){var l=list(c),done=0;l.forEach(function(d){if(cnt(c,d.id)>=d.k)done++});return{done:done,n:l.length}}
-function greet(){var h=new Date().getHours();return h<4?'أهلاً بك':h<12?'صباح الخير':h<17?'نهارك سعيد':h<20?'مساء الخير':'مساء النور'}
+function nm(){return (S.name||'').trim()}
+function greet(){var h=new Date().getHours();var g=gr0(h);return nm()?g+' يا '+nm():g}
+function gr0(h){return h<4?'أهلاً بك':h<12?'صباح الخير':h<17?'نهارك سعيد':h<20?'مساء الخير':'مساء النور'}
 function toast(t){var e=$('#toast');e.textContent=t;e.className='on';clearTimeout(toast.h);toast.h=setTimeout(function(){e.className=''},6000)}
 function catById(id){return id==='fav'?{id:'fav',n:'المفضلة',d:'أذكارك المحفوظة'}:CATS.filter(function(c){return c.id===id})[0]}
 /* ---- prayer times ---- */
@@ -112,9 +114,10 @@ function setView(){var iv=S.iv;
  '<div class="sec">ذكر كل فترة</div><div class="list st">'+row('bell','تفعيل',sw('iv.on',iv.on))+row('clock','كل','<select data-k="iv.min">'+[1,5,10,15,20,30,45,60,90,120].map(function(m){return '<option value="'+m+'"'+(iv.min==m?' selected':'')+'>'+an(m)+' دقيقة</option>'}).join('')+'</select>')+row('sun','من','<input type="time" data-k="iv.from" value="'+iv.from+'">')+row('moon','إلى','<input type="time" data-k="iv.to" value="'+iv.to+'">')+'</div>'+
  '<div class="list st"><button class="it" data-perm="1"><div class="ib">'+IC('bell',22)+'</div><div class="t"><b>السماح بالإشعارات</b><span id="pst">'+permTxt()+'</span></div></button><button class="it" data-test="1"><div class="ib">'+IC('check',22)+'</div><div class="t"><b>جرّب إشعار الآن</b></div></button></div>'+
  '<p class="note">الإشعارات بتوصل والتطبيق مفتوح. على الآيفون، أضف التطبيق للشاشة الرئيسية الأول.</p>'+
+ '<div class="sec">الاسم</div><div class="list st">'+row('heart','اسمك (اختياري)','<input type="text" data-k="name" maxlength="20" placeholder="مثلاً حازم" value="'+esc(S.name||'').replace(/"/g,'&quot;')+'" style="width:48%">')+'</div><p class="note">يظهر في التحية وفي عنوان الإشعارات. محفوظ على جهازك فقط.</p>'+
  '<div class="sec">المدينة</div><div class="list st">'+row('pin','مواقيت الصلاة','<select data-city="1">'+CITIES.map(function(x){return '<option value="'+x[0]+'"'+(x[0]===S.city?' selected':'')+'>'+x[1]+'</option>'}).join('')+'</select>')+'</div>'+
  '<div class="sec">المظهر</div><div class="list st">'+row('moon','الوضع الليلي',sw('dark',S.dark))+row('type','حجم الخط','<input type="range" min="22" max="40" value="'+S.fs+'" data-k="fs">')+'</div>'+
- '<p class="note" style="text-align:center;margin-top:0">© Hazem Saleh</p>'}
+ '<p class="note" style="text-align:center;margin-top:0">نسخة ٨ · © Hazem Saleh</p>'}
 function permTxt(){if(!('Notification' in window))return 'غير متاحة هنا، أضف التطبيق للشاشة الرئيسية';return {granted:'مفعّلة',denied:'مرفوضة، فعّلها من إعدادات الآيفون',default:'لسه ماتفعّلتش'}[Notification.permission]}
 function cd(){var e=document.querySelectorAll('[data-cd]');if(!e.length)return;var n=nextPrayer();e.forEach(function(x){x.textContent=fmtLeft(n.left)})}
 setInterval(function(){if(view.t==='home'||view.t==='pray')cd()},20000);
@@ -169,8 +172,9 @@ function bind(){
  var pm=document.querySelector('[data-perm]');if(pm)pm.onclick=function(){if(!('Notification' in window)){toast('أضف التطبيق للشاشة الرئيسية الأول');return}Notification.requestPermission().then(function(){var e=$('#pst');if(e)e.textContent=permTxt()})};
  var ts=document.querySelector('[data-test]');if(ts)ts.onclick=function(){notify('أذكار','سُبْحَانَ اللَّهِ وَبِحَمْدِهِ، سُبْحَانَ اللَّهِ الْعَظِيمِ')}}
 var reg=null;
-if('serviceWorker' in navigator)navigator.serviceWorker.register('sw.js').then(function(r){reg=r}).catch(function(){});
-function notify(title,body){toast(body);if('Notification' in window&&Notification.permission==='granted'){try{if(reg)reg.showNotification(title,{body:body,icon:'icons/icon-192.png',dir:'rtl',lang:'ar',tag:'adhkar'});else new Notification(title,{body:body})}catch(e){}}}
+var hadC=!!(navigator.serviceWorker&&navigator.serviceWorker.controller);if(navigator.serviceWorker)navigator.serviceWorker.addEventListener('controllerchange',function(){if(hadC&&view.t!=='read'&&!document.querySelector('.ov'))location.reload()});
+if('serviceWorker' in navigator)navigator.serviceWorker.register('sw.js',{updateViaCache:'none'}).then(function(r){reg=r}).catch(function(){});
+function notify(title,body){if(nm())title=title+' يا '+nm();toast(body);if('Notification' in window&&Notification.permission==='granted'){try{if(reg)reg.showNotification(title,{body:body,icon:'icons/icon-192.png',dir:'rtl',lang:'ar',tag:'adhkar'});else new Notification(title,{body:body})}catch(e){}}}
 function mins(t){var p=t.split(':');return +p[0]*60+ +p[1]}
 function tick(){var n=new Date(),m=n.getHours()*60+n.getMinutes(),k=today();
  if(!S.fired[k]){S.fired={};S.fired[k]={}}
@@ -182,7 +186,7 @@ function tick(){var n=new Date(),m=n.getHours()*60+n.getMinutes(),k=today();
   if(inW&&Date.now()>=S.next){var d=POOL[Math.floor(Math.random()*POOL.length)];S.next=Date.now()+iv.min*6e4;save();notify('ذكر',d.t)}
   else if(!inW&&Date.now()>=S.next){S.next=Date.now()+iv.min*6e4;save()}}}
 setInterval(tick,15000);document.addEventListener('visibilitychange',function(){if(!document.hidden)tick()});
-['gesturestart','gesturechange','gestureend'].forEach(function(n){document.addEventListener(n,function(e){e.preventDefault()},{passive:false})});document.addEventListener('touchmove',function(e){if(e.touches.length>1)e.preventDefault()},{passive:false});
+['gesturestart','gesturechange','gestureend'].forEach(function(n){[document,window,document.body].forEach(function(t){t.addEventListener(n,function(e){e.preventDefault()},{passive:false})})});document.addEventListener('touchstart',function(e){if(e.touches.length>1)e.preventDefault()},{passive:false});document.addEventListener('touchmove',function(e){if(e.touches.length>1)e.preventDefault()},{passive:false});
 window.__adhkar={tick:tick,S:S,notify:notify};
 render();tick();
 })();
