@@ -3,6 +3,8 @@ import { isDue } from './schedule.js';
 // Generic texts only: the server knows nothing about the user.
 const PHRASES = ['سبحان الله وبحمده، سبحان الله العظيم', 'أستغفر الله وأتوب إليه', 'لا حول ولا قوة إلا بالله', 'اللهم صلِّ وسلِّم على نبينا محمد', 'سبحان الله', 'الحمد لله', 'لا إله إلا الله', 'الله أكبر'];
 const HOSTS = [/^web\.push\.apple\.com$/, /^[a-z0-9.-]+\.push\.apple\.com$/, /^fcm\.googleapis\.com$/, /^updates\.push\.services\.mozilla\.com$/, /^[a-z0-9.-]+\.notify\.windows\.com$/];
+// Plain wording about keeping up the remembrance (no hadith quotations).
+const TITLES = ['داوم على ذكر الله', 'لا تفتر عن ذكر الله', 'أكثر من ذكر الله', 'اذكر الله كثيرًا'];
 const MAX_BODY = 2048;
 const enc = new TextEncoder();
 const hdr = (env) => ({ 'Access-Control-Allow-Origin': env.ALLOW_ORIGIN, 'Access-Control-Allow-Headers': 'content-type', 'Access-Control-Allow-Methods': 'POST,GET,OPTIONS', Vary: 'Origin', 'Cache-Control': 'no-store' });
@@ -77,7 +79,7 @@ export async function runCron(env, now = Date.now(), send = sendPush) {
     if (attempts >= MAX_PER_RUN) break;
     attempts++;
     let st = 0;
-    try { st = await send({ endpoint: r.endpoint, p256dh: r.p256dh, auth: r.auth }, { title: d.kind === 'fixed' ? 'حان موعد أذكارك' : 'اذكر الله', body: PHRASES[Math.floor(now / 60000) % PHRASES.length], tag: 'adhkar-' + d.kind }, env); } catch { st = 0; }
+    try { st = await send({ endpoint: r.endpoint, p256dh: r.p256dh, auth: r.auth }, { title: d.kind === 'fixed' ? 'حان موعد أذكارك' : TITLES[(Math.floor(now / 60000) * 7 + Math.floor(now / 3600000)) % TITLES.length], body: PHRASES[Math.floor(now / 60000) % PHRASES.length], tag: 'adhkar-' + d.kind }, env); } catch { st = 0; }
     if (st === 404 || st === 410) await env.DB.prepare('DELETE FROM subs WHERE id=?').bind(r.id).run();
     else if (st >= 200 && st < 300) { sent++; await env.DB.prepare('UPDATE subs SET last_sent_ms=?,last_ok_ms=?,fail=0 WHERE id=?').bind(now, now, r.id).run(); }
     else await env.DB.prepare('UPDATE subs SET fail=fail+1,last_sent_ms=? WHERE id=?').bind(now, r.id).run();
