@@ -36,10 +36,10 @@ function suggest(){var P=ptoday(),m=P.now,t=P.t,lp=lastPrayer();
 function hijri(dt){var o={};new Intl.DateTimeFormat('en-u-ca-islamic-umalqura-nu-latn',{day:'numeric',month:'numeric',year:'numeric'}).formatToParts(dt).forEach(function(p){o[p.type]=+p.value});return {d:o.day,m:o.month,y:o.year}}
 function occ(dt){var h=hijri(dt),w=dt.getDay(),o=[];
  if(h.m===9)o.push(['moon','شهر رمضان المبارك']);
- if(h.m===10&&h.d===1)o.push(['star','عيد الفطر المبارك']);
- if(h.m===12&&h.d===10)o.push(['star','عيد الأضحى المبارك']);
+ if(h.m===10&&h.d===1)o.push(['moon','عيد الفطر المبارك']);
+ if(h.m===12&&h.d===10)o.push(['moon','عيد الأضحى المبارك']);
  if(h.m===12&&h.d===9)o.push(['sun','يوم عرفة، صيامه يكفّر سنتين لغير الحاج']);
- if(h.m===12&&h.d<=9)o.push(['star','العشر الأوائل من ذي الحجة']);
+ if(h.m===12&&h.d<=9)o.push(['moon','العشر الأوائل من ذي الحجة']);
  if(h.m===1&&h.d===10)o.push(['moon','يوم عاشوراء، صيامه يكفّر السنة الماضية']);
  if(w===5)o.push(['cal','يوم الجمعة: أكثر من الصلاة على النبي ﷺ واقرأ سورة الكهف']);
  var white=(h.d===13&&h.m!==12)||h.d===14||h.d===15;
@@ -123,7 +123,6 @@ function advance(){view.i++;render()}
 function wrapLines(ctx,text,maxW){var out=[];text.split('\n').forEach(function(par){var w=par.split(/\s+/),line='';w.forEach(function(x){var t=line?line+' '+x:x;if(ctx.measureText(t).width>maxW&&line){out.push(line);line=x}else line=t});if(line)out.push(line)});return out}
 function drawCard(d){var W=1080,H=1350,cv=document.createElement('canvas');cv.width=W;cv.height=H;var x=cv.getContext('2d');
  var g=x.createLinearGradient(0,0,W,H);g.addColorStop(0,'#0c3a31');g.addColorStop(.6,'#17614f');g.addColorStop(1,'#1f7a64');x.fillStyle=g;x.fillRect(0,0,W,H);
- x.strokeStyle='rgba(255,255,255,.07)';x.lineWidth=2;for(var i=0;i<W/110+1;i++)for(var j=0;j<H/110+1;j++){var cx=i*110,cy=j*110;x.strokeRect(cx-25,cy-25,50,50);x.save();x.translate(cx,cy);x.rotate(Math.PI/4);x.strokeRect(-25,-25,50,50);x.restore()}
  x.fillStyle='rgba(8,40,33,.55)';x.beginPath();x.roundRect?x.roundRect(70,110,W-140,H-220,60):x.rect(70,110,W-140,H-220);x.fill();
  x.strokeStyle='#d8b468';x.globalAlpha=.8;x.lineWidth=3;x.beginPath();x.moveTo(W/2-120,200);x.lineTo(W/2-18,200);x.moveTo(W/2+18,200);x.lineTo(W/2+120,200);x.stroke();x.beginPath();x.arc(W/2,200,8,0,7);x.stroke();x.globalAlpha=1;
  x.direction='rtl';x.textAlign='center';x.fillStyle='#fff';var size=72,lines,maxH=760;

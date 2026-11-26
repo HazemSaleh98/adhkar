@@ -87,3 +87,4 @@ select{font-family:inherit;font-size:14px;color:var(--ink);background:var(--tint
 .sh{width:100%;max-width:560px;background:var(--bg);border-radius:28px 28px 0 0;padding:16px 16px calc(env(safe-area-inset-bottom) + 14px);max-height:94%;overflow:auto}
 .shi{display:flex;justify-content:center;margin-bottom:12px}.shi img{max-height:56vh;max-width:100%;border-radius:18px;box-shadow:var(--sh)}
 .row2{display:flex;gap:8px}.row2 .btn{flex:1;padding:12px 6px;font-size:14px}.cl{display:block;margin:10px auto 0;background:none;border:0;color:var(--mut);font-size:14px;padding:8px}
+.hero:before{display:none!important}

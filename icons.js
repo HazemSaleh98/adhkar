@@ -26,4 +26,4 @@ dl:'<path d="M12 3.500V15M7.500 11 12 15.500 16.500 11M5 20h14"/>',
 plus:'<path d="M12 5v14M5 12h14"/>',
 copy:'<rect x="8.5" y="8.5" width="11" height="11" rx="2.5"/><path d="M15.5 8.5V6A2.5 2.5 0 0 0 13 3.5H6A2.5 2.5 0 0 0 3.5 6v7A2.5 2.5 0 0 0 6 15.5h2.5"/>'};
 return function(n,s,c){return '<svg class="i '+(c||'')+'" width="'+(s||24)+'" height="'+(s||24)+'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">'+P[n]+'</svg>'}})();
-var CATIC={quran:'book',khatm:'star',morning:'sunrise',evening:'sunset',prayer:'mosque',sleep:'moon',wake:'sun',daily:'book',tasbih:'beads'};
+var CATIC={quran:'book',khatm:'book',morning:'sunrise',evening:'sunset',prayer:'mosque',sleep:'moon',wake:'sun',daily:'book',tasbih:'beads'};
