@@ -3,7 +3,7 @@ var $=function(s){return document.querySelector(s)};
 var KEY='adhkar.v2';
 var S=load();
 function load(){var d={};try{d=JSON.parse(localStorage.getItem(KEY))||{}}catch(e){}
- return Object.assign({fav:{},prog:{},tt:33,fs:30,dark:false,tas:0,m:{on:true,t:'05:30'},e:{on:true,t:'17:00'},iv:{on:false,min:15,from:'08:00',to:'22:00'},fired:{},next:0,city:'cairo',name:'',hist:{},total:0,ctr:{ist:{d:'',n:0,g:100},sal:{d:'',n:0,g:100}},pr:{on:false},tm:'free'},d)}
+ return Object.assign({fav:{},prog:{},tt:33,fs:30,dark:false,tas:0,m:{on:true,t:'05:30'},e:{on:true,t:'17:00'},iv:{on:false,min:15,from:'08:00',to:'22:00'},fired:{},next:0,city:'cairo',snd:true,wl:false,name:'',hist:{},total:0,ctr:{ist:{d:'',n:0,g:100},sal:{d:'',n:0,g:100}},pr:{on:false},tm:'free'},d)}
 function save(){localStorage.setItem(KEY,JSON.stringify(S))}
 function dkey(d){return d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate()}
 function today(){return dkey(new Date())}
@@ -111,13 +111,17 @@ function sw(k,v){return '<input type="checkbox" class="sw" data-k="'+k+'" '+(v?'
 function setView(){var iv=S.iv;
  return '<h1 class="h1">الإعدادات</h1><p class="sub" style="margin-bottom:20px">التذكيرات والمظهر</p>'+
  '<div class="sec">التذكيرات</div><div class="list st">'+row('sunrise','أذكار الصباح',sw('m.on',S.m.on))+row('clock','الوقت','<input type="time" data-k="m.t" value="'+S.m.t+'">')+row('sunset','أذكار المساء',sw('e.on',S.e.on))+row('clock','الوقت','<input type="time" data-k="e.t" value="'+S.e.t+'">')+row('mosque','تذكير بعد كل صلاة',sw('pr.on',S.pr.on))+'</div>'+
- '<div class="sec">ذكر كل فترة</div><div class="list st">'+row('bell','تفعيل',sw('iv.on',iv.on))+row('clock','كل','<select data-k="iv.min">'+[1,5,10,15,20,30,45,60,90,120].map(function(m){return '<option value="'+m+'"'+(iv.min==m?' selected':'')+'>'+an(m)+' دقيقة</option>'}).join('')+'</select>')+row('sun','من','<input type="time" data-k="iv.from" value="'+iv.from+'">')+row('moon','إلى','<input type="time" data-k="iv.to" value="'+iv.to+'">')+'</div>'+
+ '<div class="sec">ذكر كل فترة</div><div class="list st">'+row('bell','تفعيل',sw('iv.on',iv.on))+row('clock','كل','<select data-k="iv.min">'+[1,5,10,15,20,30,45,60,90,120].map(function(m){return '<option value="'+m+'"'+(iv.min==m?' selected':'')+'>'+an(m)+' دقيقة</option>'}).join('')+'</select>')+row('sun','من','<input type="time" data-k="iv.from" value="'+iv.from+'">')+row('moon','إلى','<input type="time" data-k="iv.to" value="'+iv.to+'">')+row('bell','صوت التنبيه',sw('snd',S.snd))+row('clock','إبقاء الشاشة مفتوحة',sw('wl',S.wl))+'</div><p class="note" id="ivs">'+ivStatus()+'</p>'+
  '<div class="list st"><button class="it" data-perm="1"><div class="ib">'+IC('bell',22)+'</div><div class="t"><b>السماح بالإشعارات</b><span id="pst">'+permTxt()+'</span></div></button><button class="it" data-test="1"><div class="ib">'+IC('check',22)+'</div><div class="t"><b>جرّب إشعار الآن</b></div></button></div>'+
  '<p class="note">الإشعارات بتوصل والتطبيق مفتوح. على الآيفون، أضف التطبيق للشاشة الرئيسية الأول.</p>'+
  '<div class="sec">الاسم</div><div class="list st">'+row('heart','اسمك (اختياري)','<input type="text" data-k="name" maxlength="20" placeholder="مثلاً حازم" value="'+esc(S.name||'').replace(/"/g,'&quot;')+'" style="width:48%">')+'</div><p class="note">يظهر في التحية وفي عنوان الإشعارات. محفوظ على جهازك فقط.</p>'+
  '<div class="sec">المدينة</div><div class="list st">'+row('pin','مواقيت الصلاة','<select data-city="1">'+CITIES.map(function(x){return '<option value="'+x[0]+'"'+(x[0]===S.city?' selected':'')+'>'+x[1]+'</option>'}).join('')+'</select>')+'</div>'+
  '<div class="sec">المظهر</div><div class="list st">'+row('moon','الوضع الليلي',sw('dark',S.dark))+row('type','حجم الخط','<input type="range" min="22" max="40" value="'+S.fs+'" data-k="fs">')+'</div>'+
- '<p class="note" style="text-align:center;margin-top:0">نسخة ٨ · © Hazem Saleh</p>'}
+ '<p class="note" style="text-align:center;margin-top:0">نسخة ٩ تجريبية · © Hazem Saleh</p>'}
+function ivStatus(){var st=(navigator.standalone||matchMedia('(display-mode: standalone)').matches),h;
+ h=st?'التطبيق مثبّت على الشاشة الرئيسية.':'أنت فاتح من Safari: التنبيهات هتظهر جوه الصفحة بس، وللتنبيهات برا الصفحة لازم تضيف التطبيق للشاشة الرئيسية.';
+ if(S.iv.on){var w=S.next?new Date(S.next):null;h='التذكير القادم: '+(w?an(p2(w.getHours()))+':'+an(p2(w.getMinutes())):'خلال لحظات')+'. '+h}
+ return h+' التذكير بيشتغل والتطبيق مفتوح وعلى الشاشة بس، لأن آيفون بيوقف الصفحات المقفولة أو في الخلفية. شغّل "إبقاء الشاشة مفتوحة" لو هتسيبه شغال.'}
 function permTxt(){if(!('Notification' in window))return 'غير متاحة هنا، أضف التطبيق للشاشة الرئيسية';return {granted:'مفعّلة',denied:'مرفوضة، فعّلها من إعدادات الآيفون',default:'لسه ماتفعّلتش'}[Notification.permission]}
 function cd(){var e=document.querySelectorAll('[data-cd]');if(!e.length)return;var n=nextPrayer();e.forEach(function(x){x.textContent=fmtLeft(n.left)})}
 setInterval(function(){if(view.t==='home'||view.t==='pray')cd()},20000);
@@ -174,9 +178,14 @@ function bind(){
 var reg=null;
 var hadC=!!(navigator.serviceWorker&&navigator.serviceWorker.controller);if(navigator.serviceWorker)navigator.serviceWorker.addEventListener('controllerchange',function(){if(hadC&&view.t!=='read'&&!document.querySelector('.ov'))location.reload()});
 if('serviceWorker' in navigator)navigator.serviceWorker.register('sw.js',{updateViaCache:'none'}).then(function(r){reg=r}).catch(function(){});
-function notify(title,body){if(nm())title=title+' يا '+nm();toast(body);if('Notification' in window&&Notification.permission==='granted'){try{if(reg)reg.showNotification(title,{body:body,icon:'icons/icon-192.png',dir:'rtl',lang:'ar',tag:'adhkar'});else new Notification(title,{body:body})}catch(e){}}}
+var AC=null;function unlock(){try{AC=AC||new (window.AudioContext||window.webkitAudioContext)();if(AC.state==='suspended')AC.resume()}catch(e){}}
+['touchstart','click'].forEach(function(n){document.addEventListener(n,unlock,{passive:true})});
+function chime(){if(!S.snd||!AC||AC.state!=='running')return;try{[[660,0],[880,.22]].forEach(function(f){var o=AC.createOscillator(),g=AC.createGain(),t=AC.currentTime+f[1];o.type='sine';o.frequency.value=f[0];g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(.18,t+.03);g.gain.exponentialRampToValueAtTime(.001,t+.7);o.connect(g);g.connect(AC.destination);o.start(t);o.stop(t+.75)})}catch(e){}}
+function banner(t,b){var e=document.getElementById('bn');if(!e){e=document.createElement('div');e.id='bn';document.body.appendChild(e)}e.innerHTML='<b>'+esc(t)+'</b><span>'+esc(b)+'</span>';e.className='on';e.onclick=function(){e.className=''};clearTimeout(banner.h);banner.h=setTimeout(function(){e.className=''},30000)}
+var wlk=null;function applyWL(){if(!('wakeLock' in navigator))return;if(S.wl&&!document.hidden&&!wlk){navigator.wakeLock.request('screen').then(function(l){wlk=l;l.addEventListener('release',function(){wlk=null})}).catch(function(){})}else if(!S.wl&&wlk){wlk.release();wlk=null}}
+function notify(title,body){if(nm())title=title+' يا '+nm();banner(title,body);chime();if(navigator.vibrate)navigator.vibrate([200,100,200]);if('Notification' in window&&Notification.permission==='granted'){try{if(reg)reg.showNotification(title,{body:body,icon:'icons/icon-192.png',dir:'rtl',lang:'ar',tag:'adhkar'});else new Notification(title,{body:body})}catch(e){}}}
 function mins(t){var p=t.split(':');return +p[0]*60+ +p[1]}
-function tick(){var n=new Date(),m=n.getHours()*60+n.getMinutes(),k=today();
+function tick(){applyWL();var n=new Date(),m=n.getHours()*60+n.getMinutes(),k=today();
  if(!S.fired[k]){S.fired={};S.fired[k]={}}
  [['m','أذكار الصباح','حان وقت أذكار الصباح 🌅'],['e','أذكار المساء','حان وقت أذكار المساء 🌇']].forEach(function(x){var c=S[x[0]];
   if(c.on&&!S.fired[k][x[0]]&&m>=mins(c.t)&&m<mins(c.t)+180){S.fired[k][x[0]]=1;save();notify(x[1],x[2])}});
