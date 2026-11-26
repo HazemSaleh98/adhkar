@@ -16,8 +16,7 @@ function cnt(cat,id){return (dayP()[cat+'|'+id])||0}
 function list(c){return c==='fav'?DH.filter(function(d){return S.fav[d.id]}):DH.filter(function(d){return d.c.indexOf(c)>=0})}
 function catProg(c){var l=list(c),done=0;l.forEach(function(d){if(cnt(c,d.id)>=d.k)done++});return{done:done,n:l.length}}
 function nm(){return (S.name||'').trim()}
-function greet(){var h=new Date().getHours();var g=gr0(h);return nm()?g+' يا '+nm():g}
-function gr0(h){return h<4?'أهلاً بك':h<12?'صباح الخير':h<17?'نهارك سعيد':h<20?'مساء الخير':'مساء النور'}
+function greet(){return nm()?'السلام عليكم يا '+nm():'السلام عليكم'}
 function toast(t){var e=$('#toast');e.textContent=t;e.className='on';clearTimeout(toast.h);toast.h=setTimeout(function(){e.className=''},6000)}
 function catById(id){return id==='fav'?{id:'fav',n:'المفضلة',d:'أذكارك المحفوظة'}:CATS.filter(function(c){return c.id===id})[0]}
 /* ---- prayer times ---- */
@@ -117,7 +116,7 @@ function setView(){var iv=S.iv;
  '<div class="sec">الاسم</div><div class="list st">'+row('heart','اسمك (اختياري)','<input type="text" data-k="name" maxlength="20" placeholder="مثلاً حازم" value="'+esc(S.name||'').replace(/"/g,'&quot;')+'" style="width:48%">')+'</div><p class="note">يظهر في التحية وفي عنوان الإشعارات. محفوظ على جهازك فقط.</p>'+
  '<div class="sec">المدينة</div><div class="list st">'+row('pin','مواقيت الصلاة','<select data-city="1">'+CITIES.map(function(x){return '<option value="'+x[0]+'"'+(x[0]===S.city?' selected':'')+'>'+x[1]+'</option>'}).join('')+'</select>')+'</div>'+
  '<div class="sec">المظهر</div><div class="list st">'+row('moon','الوضع الليلي',sw('dark',S.dark))+row('type','حجم الخط','<input type="range" min="22" max="40" value="'+S.fs+'" data-k="fs">')+'</div>'+
- '<p class="note" style="text-align:center;margin-top:0">نسخة ١١ تجريبية · © Hazem Saleh</p>'}
+ '<p class="note" style="text-align:center;margin-top:0">نسخة ١٢ تجريبية · © Hazem Saleh</p>'}
 function ivStatus(){var st=(navigator.standalone||matchMedia('(display-mode: standalone)').matches),h;
  h=st?'التطبيق مثبّت على الشاشة الرئيسية.':'أنت فاتح من Safari: التنبيهات هتظهر جوه الصفحة بس، وللتنبيهات برا الصفحة لازم تضيف التطبيق للشاشة الرئيسية.';
  if(S.iv.on){var w=S.next?new Date(S.next):null;h='التذكير القادم: '+(w?an(p2(w.getHours()))+':'+an(p2(w.getMinutes())):'خلال لحظات')+'. '+h}
