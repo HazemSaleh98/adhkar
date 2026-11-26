@@ -1,0 +1,23 @@
+name = "adhkar-push"
+main = "src/index.js"
+compatibility_date = "2026-01-01"
+workers_dev = true
+
+# Never log subscription data: logs and tracing stay off.
+[observability]
+enabled = false
+
+[triggers]
+crons = ["* * * * *"]
+
+[[d1_databases]]
+binding = "DB"
+database_name = "adhkar-push"
+database_id = "41de68d5-92c3-4629-b64e-46527eadd4bc"
+
+[vars]
+ALLOW_ORIGIN = "https://hazemsaleh98.github.io"
+VAPID_SUBJECT = "https://hazemsaleh98.github.io/adhkar/"
+MAX_SUBS = "100"
+VAPID_PUBLIC = "BH94qzknYRm3m6e8S5i1mKET8UmBKL0e-phED_E48-Onqjwc4CJSD8IZ9qKbKHd9-HQXsrgxpdQ122QAkS71no4"
+# Secret (never in this file or GitHub): VAPID_PRIVATE  ->  wrangler secret put VAPID_PRIVATE
