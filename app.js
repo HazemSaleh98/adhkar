@@ -129,7 +129,7 @@ function drawCard(d){var W=1080,H=1350,cv=document.createElement('canvas');cv.wi
  for(;size>=28;size-=2){x.font='400 '+size+'px Amiri, serif';lines=wrapLines(x,d.t,W-260);if(lines.length*size*1.95<=maxH)break}
  var lh=size*1.95,y0=260+(maxH-lines.length*lh)/2+lh*.7;lines.forEach(function(l,i){x.fillText(l,W/2,y0+i*lh)});
  x.font='400 34px "IBM Plex Sans Arabic", sans-serif';x.fillStyle='rgba(255,255,255,.7)';if(d.s){var sl=wrapLines(x,d.s.length>90?d.s.slice(0,90)+'…':d.s,W-300);sl.slice(0,2).forEach(function(l,i){x.fillText(l,W/2,1075+i*46)})}
- x.font='500 32px "IBM Plex Sans Arabic", sans-serif';x.fillStyle='#d8b468';x.fillText('أذكار  ·  © Hazem Saleh',W/2,1185);
+ x.font='500 32px "IBM Plex Sans Arabic", sans-serif';x.fillStyle='#d8b468';x.fillText('أذكار',W/2,1185);
  return cv}
 function openShare(d){var ov=document.createElement('div');ov.className='ov';ov.innerHTML='<div class="sh"><div class="shi"><div class="empty" style="padding:60px 0">جاري تجهيز البطاقة…</div></div><div class="row2"><button class="btn" data-do="share">مشاركة</button><button class="btn o" data-do="save">حفظ الصورة</button><button class="btn o" data-do="txt">نسخ النص</button></div><button class="cl" data-do="close">إغلاق</button></div>';document.body.appendChild(ov);
  var blob=null;
@@ -182,6 +182,7 @@ function tick(){var n=new Date(),m=n.getHours()*60+n.getMinutes(),k=today();
   if(inW&&Date.now()>=S.next){var d=POOL[Math.floor(Math.random()*POOL.length)];S.next=Date.now()+iv.min*6e4;save();notify('ذكر',d.t)}
   else if(!inW&&Date.now()>=S.next){S.next=Date.now()+iv.min*6e4;save()}}}
 setInterval(tick,15000);document.addEventListener('visibilitychange',function(){if(!document.hidden)tick()});
+['gesturestart','gesturechange','gestureend'].forEach(function(n){document.addEventListener(n,function(e){e.preventDefault()},{passive:false})});document.addEventListener('touchmove',function(e){if(e.touches.length>1)e.preventDefault()},{passive:false});
 window.__adhkar={tick:tick,S:S,notify:notify};
 render();tick();
 })();
