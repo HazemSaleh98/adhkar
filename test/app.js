@@ -117,7 +117,7 @@ function setView(){var iv=S.iv;
  '<div class="sec">الاسم</div><div class="list st">'+row('heart','اسمك (اختياري)','<input type="text" data-k="name" maxlength="20" placeholder="مثلاً حازم" value="'+esc(S.name||'').replace(/"/g,'&quot;')+'" style="width:48%">')+'</div><p class="note">يظهر في التحية وفي عنوان الإشعارات. محفوظ على جهازك فقط.</p>'+
  '<div class="sec">المدينة</div><div class="list st">'+row('pin','مواقيت الصلاة','<select data-city="1">'+CITIES.map(function(x){return '<option value="'+x[0]+'"'+(x[0]===S.city?' selected':'')+'>'+x[1]+'</option>'}).join('')+'</select>')+'</div>'+
  '<div class="sec">المظهر</div><div class="list st">'+row('moon','الوضع الليلي',sw('dark',S.dark))+row('type','حجم الخط','<input type="range" min="22" max="40" value="'+S.fs+'" data-k="fs">')+'</div>'+
- '<p class="note" style="text-align:center;margin-top:0">نسخة ١٠ تجريبية · © Hazem Saleh</p>'}
+ '<p class="note" style="text-align:center;margin-top:0">نسخة ١١ تجريبية · © Hazem Saleh</p>'}
 function ivStatus(){var st=(navigator.standalone||matchMedia('(display-mode: standalone)').matches),h;
  h=st?'التطبيق مثبّت على الشاشة الرئيسية.':'أنت فاتح من Safari: التنبيهات هتظهر جوه الصفحة بس، وللتنبيهات برا الصفحة لازم تضيف التطبيق للشاشة الرئيسية.';
  if(S.iv.on){var w=S.next?new Date(S.next):null;h='التذكير القادم: '+(w?an(p2(w.getHours()))+':'+an(p2(w.getMinutes())):'خلال لحظات')+'. '+h}
@@ -185,15 +185,18 @@ function banner(t,b){var e=document.getElementById('bn');if(!e){e=document.creat
 var wlk=null;function applyWL(){if(!('wakeLock' in navigator))return;if(S.wl&&!document.hidden&&!wlk){navigator.wakeLock.request('screen').then(function(l){wlk=l;l.addEventListener('release',function(){wlk=null})}).catch(function(){})}else if(!S.wl&&wlk){wlk.release();wlk=null}}
 function notify(title,body){if(nm())title=title+' يا '+nm();banner(title,body);chime();if(navigator.vibrate)navigator.vibrate([200,100,200]);if('Notification' in window&&Notification.permission==='granted'){try{if(reg)reg.showNotification(title,{body:body,icon:'icons/icon-192.png',dir:'rtl',lang:'ar',tag:'adhkar'});else new Notification(title,{body:body})}catch(e){}}}
 function mins(t){var p=t.split(':');return +p[0]*60+ +p[1]}
-function tick(){applyWL();var n=new Date(),m=n.getHours()*60+n.getMinutes(),k=today();
+function tick(){applyWL();var n=new Date(),m=n.getHours()*60+n.getMinutes(),k=today(),due=[];
  if(!S.fired[k]){S.fired={};S.fired[k]={}}
  [['m','أذكار الصباح','حان وقت أذكار الصباح 🌅'],['e','أذكار المساء','حان وقت أذكار المساء 🌇']].forEach(function(x){var c=S[x[0]];
-  if(c.on&&!S.fired[k][x[0]]&&m>=mins(c.t)&&m<mins(c.t)+180){S.fired[k][x[0]]=1;save();notify(x[1],x[2])}});
- if(S.pr.on){var P=ptoday(),lp=lastPrayer();if(lp&&lp.ago<=4&&!S.fired[k]['p'+lp.k]){S.fired[k]['p'+lp.k]=1;save();notify('أذكار بعد الصلاة','حان وقت أذكار بعد صلاة '+lp.n)}}
- var iv=S.iv;if(iv.on){var inW=m>=mins(iv.from)&&m<=mins(iv.to);
+  if(c.on&&!S.fired[k][x[0]]&&m>=mins(c.t)&&m<mins(c.t)+180){S.fired[k][x[0]]=1;due.push({at:mins(c.t),t:x[1],b:x[2]})}});
+ if(S.pr.on){var lp=lastPrayer();if(lp&&lp.ago<=4&&!S.fired[k]['p'+lp.k]){S.fired[k]['p'+lp.k]=1;due.push({at:m-lp.ago,t:'أذكار بعد الصلاة',b:'حان وقت أذكار بعد صلاة '+lp.n})}}
+ var iv=S.iv,ivd=null;if(iv.on){var inW=m>=mins(iv.from)&&m<=mins(iv.to);
   if(!S.next)S.next=Date.now()+iv.min*6e4;
-  if(inW&&Date.now()>=S.next){var d=POOL[Math.floor(Math.random()*POOL.length)];S.next=Date.now()+iv.min*6e4;save();notify('ذكر',d.t)}
-  else if(!inW&&Date.now()>=S.next){S.next=Date.now()+iv.min*6e4;save()}}}
+  if(Date.now()>=S.next){S.next=Date.now()+iv.min*6e4;if(inW){var d=POOL[Math.floor(Math.random()*POOL.length)];ivd={at:m,t:'ذكر',b:d.t}}}}
+ if(ivd)due.push(ivd);
+ save();
+ // Catch-up after the phone froze the page: several reminders can be due at once. Show only the latest one, never a burst.
+ if(due.length&&Date.now()-(S.lastN||0)>20000){due.sort(function(a,b){return b.at-a.at});S.lastN=Date.now();save();notify(due[0].t,due[0].b)}}
 setInterval(tick,15000);document.addEventListener('visibilitychange',function(){if(!document.hidden)tick()});
 ['gesturestart','gesturechange','gestureend'].forEach(function(n){[document,window,document.body].forEach(function(t){t.addEventListener(n,function(e){e.preventDefault()},{passive:false})})});document.addEventListener('touchstart',function(e){if(e.touches.length>1)e.preventDefault()},{passive:false});document.addEventListener('touchmove',function(e){if(e.touches.length>1)e.preventDefault()},{passive:false});
 window.addEventListener('storage',function(e){if(e.key===KEY&&e.newValue){try{var n=JSON.parse(e.newValue);Object.keys(n).forEach(function(k){S[k]=n[k]})}catch(x){}}});
