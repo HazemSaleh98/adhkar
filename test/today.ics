@@ -1,0 +1,331 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Adhkar//AR//EN
+CALSCALE:GREGORIAN
+X-WR-CALNAME:أذكار تجربة
+BEGIN:VEVENT
+UID:adhkar-today-0@hazemsaleh98.github.io
+DTSTAMP:20261126T105837
+DTSTART:20261126T110000
+DTEND:20261126T110100
+SUMMARY:أذكار (تجربة)
+DESCRIPTION:الْحَمْدُ لِلَّهِ وَحْدَهُ، وَالصَّلاَةُ وَالسَّلاَمُ عَلَى مَنْ لاَ نَبِيَّ بَعْدَهُ
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:الْحَمْدُ لِلَّهِ وَحْدَهُ، وَالصَّلاَةُ وَالسَّلاَمُ عَلَى مَنْ لاَ نَبِيَّ بَعْدَهُ
+TRIGGER:PT0S
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:adhkar-today-1@hazemsaleh98.github.io
+DTSTAMP:20261126T105837
+DTSTART:20261126T110500
+DTEND:20261126T110600
+SUMMARY:أذكار (تجربة)
+DESCRIPTION:قُلْ هُوَ ٱللَّهُ أَحَدٌ، ٱللَّهُ ٱلصَّمَدُ، لَمْ يَلِدْ وَلَمْ يُولَدْ، وَلَمْ يَكُن لَّهُۥ كُفُوًا أَحَدٌۢ
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:قُلْ هُوَ ٱللَّهُ أَحَدٌ، ٱللَّهُ ٱلصَّمَدُ، لَمْ يَلِدْ وَلَمْ يُولَدْ، وَلَمْ يَكُن لَّهُۥ كُفُوًا أَحَدٌۢ
+TRIGGER:PT0S
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:adhkar-today-2@hazemsaleh98.github.io
+DTSTAMP:20261126T105837
+DTSTART:20261126T111000
+DTEND:20261126T111100
+SUMMARY:أذكار (تجربة)
+DESCRIPTION:قُلْ أَعُوذُ بِرَبِّ ٱلْفَلَقِ، مِن شَرِّ مَا خَلَقَ، وَمِن شَرِّ غَاسِقٍ إِذَا وَقَبَ، وَمِن شَرِّ ٱلنَّفَّٰثَٰتِ فِى ٱلْعُقَدِ، وَمِن شَرِّ حَاسِدٍ إِذَا حَسَدَ
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:قُلْ أَعُوذُ بِرَبِّ ٱلْفَلَقِ، مِن شَرِّ مَا خَلَقَ، وَمِن شَرِّ غَاسِقٍ إِذَا وَقَبَ، وَمِن شَرِّ ٱلنَّفَّٰثَٰتِ فِى ٱلْعُقَدِ، وَمِن شَرِّ حَاسِدٍ إِذَا حَسَدَ
+TRIGGER:PT0S
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:adhkar-today-3@hazemsaleh98.github.io
+DTSTAMP:20261126T105837
+DTSTART:20261126T111500
+DTEND:20261126T111600
+SUMMARY:أذكار (تجربة)
+DESCRIPTION:قُلْ أَعُوذُ بِرَبِّ ٱلنَّاسِ، مَلِكِ ٱلنَّاسِ، إِلَٰهِ ٱلنَّاسِ، مِن شَرِّ ٱلْوَسْوَاسِ ٱلْخَنَّاسِ، ٱلَّذِى يُوَسْوِسُ فِى صُدُورِ ٱلنَّاسِ، مِنَ ٱلْجِنَّةِ وَٱلنَّاسِ
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:قُلْ أَعُوذُ بِرَبِّ ٱلنَّاسِ، مَلِكِ ٱلنَّاسِ، إِلَٰهِ ٱلنَّاسِ، مِن شَرِّ ٱلْوَسْوَاسِ ٱلْخَنَّاسِ، ٱلَّذِى يُوَسْوِسُ فِى صُدُورِ ٱلنَّاسِ، مِنَ ٱلْجِنَّةِ وَٱلنَّاسِ
+TRIGGER:PT0S
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:adhkar-today-4@hazemsaleh98.github.io
+DTSTAMP:20261126T105837
+DTSTART:20261126T112000
+DTEND:20261126T112100
+SUMMARY:أذكار (تجربة)
+DESCRIPTION:اللَّهُمَّ بِكَ أَصْبَحْنَا، وَبِكَ أَمْسَيْنَا، وَبِكَ نَحْيَا، وَبِكَ نَمُوتُ وَإِلَيْكَ النُّشُورُ
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:اللَّهُمَّ بِكَ أَصْبَحْنَا، وَبِكَ أَمْسَيْنَا، وَبِكَ نَحْيَا، وَبِكَ نَمُوتُ وَإِلَيْكَ النُّشُورُ
+TRIGGER:PT0S
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:adhkar-today-5@hazemsaleh98.github.io
+DTSTAMP:20261126T105837
+DTSTART:20261126T112500
+DTEND:20261126T112600
+SUMMARY:أذكار (تجربة)
+DESCRIPTION:اللَّهُمَّ بِكَ أَمْسَيْنَا، وَبِكَ أَصْبَحْنَا، وَبِكَ نَحْيَا، وَبِكَ نَمُوتُ، وَإِلَيْكَ الْمَصِيرُ
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:اللَّهُمَّ بِكَ أَمْسَيْنَا، وَبِكَ أَصْبَحْنَا، وَبِكَ نَحْيَا، وَبِكَ نَمُوتُ، وَإِلَيْكَ الْمَصِيرُ
+TRIGGER:PT0S
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:adhkar-today-6@hazemsaleh98.github.io
+DTSTAMP:20261126T105837
+DTSTART:20261126T113000
+DTEND:20261126T113100
+SUMMARY:أذكار (تجربة)
+DESCRIPTION:اللَّهُمَّ مَا أَصْبَحَ بِي مِنْ نِعْمَةٍ أَوْ بِأَحَدٍ مِنْ خَلْقِكَ فَمِنْكَ وَحْدَكَ لاَ شَرِيكَ لَكَ، فَلَكَ الْحَمْدُ وَلَكَ الشُّكْرُ
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:اللَّهُمَّ مَا أَصْبَحَ بِي مِنْ نِعْمَةٍ أَوْ بِأَحَدٍ مِنْ خَلْقِكَ فَمِنْكَ وَحْدَكَ لاَ شَرِيكَ لَكَ، فَلَكَ الْحَمْدُ وَلَكَ الشُّكْرُ
+TRIGGER:PT0S
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:adhkar-today-7@hazemsaleh98.github.io
+DTSTAMP:20261126T105837
+DTSTART:20261126T113500
+DTEND:20261126T113600
+SUMMARY:أذكار (تجربة)
+DESCRIPTION:اللَّهُمَّ مَا أَمْسَى بِي مِنْ نِعْمَةٍ أَوْ بِأَحَدٍ مِنْ خَلْقِكَ فَمِنْكَ وَحْدَكَ لاَ شَرِيكَ لَكَ، فَلَكَ الْحَمْدُ وَلَكَ الشُّكْرُ
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:اللَّهُمَّ مَا أَمْسَى بِي مِنْ نِعْمَةٍ أَوْ بِأَحَدٍ مِنْ خَلْقِكَ فَمِنْكَ وَحْدَكَ لاَ شَرِيكَ لَكَ، فَلَكَ الْحَمْدُ وَلَكَ الشُّكْرُ
+TRIGGER:PT0S
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:adhkar-today-8@hazemsaleh98.github.io
+DTSTAMP:20261126T105837
+DTSTART:20261126T114000
+DTEND:20261126T114100
+SUMMARY:أذكار (تجربة)
+DESCRIPTION:حَسْبِيَ اللَّهُ لاَ إِلَهَ إِلاَّ هُوَ عَلَيهِ تَوَكَّلتُ وَهُوَ رَبُّ الْعَرْشِ الْعَظِيمِ
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:حَسْبِيَ اللَّهُ لاَ إِلَهَ إِلاَّ هُوَ عَلَيهِ تَوَكَّلتُ وَهُوَ رَبُّ الْعَرْشِ الْعَظِيمِ
+TRIGGER:PT0S
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:adhkar-today-9@hazemsaleh98.github.io
+DTSTAMP:20261126T105837
+DTSTART:20261126T114500
+DTEND:20261126T114600
+SUMMARY:أذكار (تجربة)
+DESCRIPTION:بِسْمِ اللَّهِ الَّذِي لاَ يَضُرُّ مَعَ اسْمِهِ شَيْءٌ فِي الْأَرْضِ وَلاَ فِي السّمَاءِ وَهُوَ السَّمِيعُ الْعَلِيمُ
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:بِسْمِ اللَّهِ الَّذِي لاَ يَضُرُّ مَعَ اسْمِهِ شَيْءٌ فِي الْأَرْضِ وَلاَ فِي السّمَاءِ وَهُوَ السَّمِيعُ الْعَلِيمُ
+TRIGGER:PT0S
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:adhkar-today-10@hazemsaleh98.github.io
+DTSTAMP:20261126T105837
+DTSTART:20261126T115000
+DTEND:20261126T115100
+SUMMARY:أذكار (تجربة)
+DESCRIPTION:رَضِيتُ بِاللَّهِ رَبَّاً، وَبِالْإِسْلاَمِ دِيناً، وَبِمُحَمَّدٍ ﷺ نَبِيًّا
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:رَضِيتُ بِاللَّهِ رَبَّاً، وَبِالْإِسْلاَمِ دِيناً، وَبِمُحَمَّدٍ ﷺ نَبِيًّا
+TRIGGER:PT0S
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:adhkar-today-11@hazemsaleh98.github.io
+DTSTAMP:20261126T105837
+DTSTART:20261126T115500
+DTEND:20261126T115600
+SUMMARY:أذكار (تجربة)
+DESCRIPTION:يَا حَيُّ يَا قَيُّومُ بِرَحْمَتِكَ أَسْتَغيثُ أَصْلِحْ لِي شَأْنِيَ كُلَّهُ وَلاَ تَكِلْنِي إِلَى نَفْسِي طَرْفَةَ عَيْنٍ
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:يَا حَيُّ يَا قَيُّومُ بِرَحْمَتِكَ أَسْتَغيثُ أَصْلِحْ لِي شَأْنِيَ كُلَّهُ وَلاَ تَكِلْنِي إِلَى نَفْسِي طَرْفَةَ عَيْنٍ
+TRIGGER:PT0S
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:adhkar-today-12@hazemsaleh98.github.io
+DTSTAMP:20261126T105837
+DTSTART:20261126T120000
+DTEND:20261126T120100
+SUMMARY:أذكار (تجربة)
+DESCRIPTION:الْحَمْدُ لِلَّهِ وَحْدَهُ، وَالصَّلاَةُ وَالسَّلاَمُ عَلَى مَنْ لاَ نَبِيَّ بَعْدَهُ
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:الْحَمْدُ لِلَّهِ وَحْدَهُ، وَالصَّلاَةُ وَالسَّلاَمُ عَلَى مَنْ لاَ نَبِيَّ بَعْدَهُ
+TRIGGER:PT0S
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:adhkar-today-13@hazemsaleh98.github.io
+DTSTAMP:20261126T105837
+DTSTART:20261126T120500
+DTEND:20261126T120600
+SUMMARY:أذكار (تجربة)
+DESCRIPTION:قُلْ هُوَ ٱللَّهُ أَحَدٌ، ٱللَّهُ ٱلصَّمَدُ، لَمْ يَلِدْ وَلَمْ يُولَدْ، وَلَمْ يَكُن لَّهُۥ كُفُوًا أَحَدٌۢ
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:قُلْ هُوَ ٱللَّهُ أَحَدٌ، ٱللَّهُ ٱلصَّمَدُ، لَمْ يَلِدْ وَلَمْ يُولَدْ، وَلَمْ يَكُن لَّهُۥ كُفُوًا أَحَدٌۢ
+TRIGGER:PT0S
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:adhkar-today-14@hazemsaleh98.github.io
+DTSTAMP:20261126T105837
+DTSTART:20261126T121000
+DTEND:20261126T121100
+SUMMARY:أذكار (تجربة)
+DESCRIPTION:قُلْ أَعُوذُ بِرَبِّ ٱلْفَلَقِ، مِن شَرِّ مَا خَلَقَ، وَمِن شَرِّ غَاسِقٍ إِذَا وَقَبَ، وَمِن شَرِّ ٱلنَّفَّٰثَٰتِ فِى ٱلْعُقَدِ، وَمِن شَرِّ حَاسِدٍ إِذَا حَسَدَ
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:قُلْ أَعُوذُ بِرَبِّ ٱلْفَلَقِ، مِن شَرِّ مَا خَلَقَ، وَمِن شَرِّ غَاسِقٍ إِذَا وَقَبَ، وَمِن شَرِّ ٱلنَّفَّٰثَٰتِ فِى ٱلْعُقَدِ، وَمِن شَرِّ حَاسِدٍ إِذَا حَسَدَ
+TRIGGER:PT0S
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:adhkar-today-15@hazemsaleh98.github.io
+DTSTAMP:20261126T105837
+DTSTART:20261126T121500
+DTEND:20261126T121600
+SUMMARY:أذكار (تجربة)
+DESCRIPTION:قُلْ أَعُوذُ بِرَبِّ ٱلنَّاسِ، مَلِكِ ٱلنَّاسِ، إِلَٰهِ ٱلنَّاسِ، مِن شَرِّ ٱلْوَسْوَاسِ ٱلْخَنَّاسِ، ٱلَّذِى يُوَسْوِسُ فِى صُدُورِ ٱلنَّاسِ، مِنَ ٱلْجِنَّةِ وَٱلنَّاسِ
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:قُلْ أَعُوذُ بِرَبِّ ٱلنَّاسِ، مَلِكِ ٱلنَّاسِ، إِلَٰهِ ٱلنَّاسِ، مِن شَرِّ ٱلْوَسْوَاسِ ٱلْخَنَّاسِ، ٱلَّذِى يُوَسْوِسُ فِى صُدُورِ ٱلنَّاسِ، مِنَ ٱلْجِنَّةِ وَٱلنَّاسِ
+TRIGGER:PT0S
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:adhkar-today-16@hazemsaleh98.github.io
+DTSTAMP:20261126T105837
+DTSTART:20261126T122000
+DTEND:20261126T122100
+SUMMARY:أذكار (تجربة)
+DESCRIPTION:اللَّهُمَّ بِكَ أَصْبَحْنَا، وَبِكَ أَمْسَيْنَا، وَبِكَ نَحْيَا، وَبِكَ نَمُوتُ وَإِلَيْكَ النُّشُورُ
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:اللَّهُمَّ بِكَ أَصْبَحْنَا، وَبِكَ أَمْسَيْنَا، وَبِكَ نَحْيَا، وَبِكَ نَمُوتُ وَإِلَيْكَ النُّشُورُ
+TRIGGER:PT0S
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:adhkar-today-17@hazemsaleh98.github.io
+DTSTAMP:20261126T105837
+DTSTART:20261126T122500
+DTEND:20261126T122600
+SUMMARY:أذكار (تجربة)
+DESCRIPTION:اللَّهُمَّ بِكَ أَمْسَيْنَا، وَبِكَ أَصْبَحْنَا، وَبِكَ نَحْيَا، وَبِكَ نَمُوتُ، وَإِلَيْكَ الْمَصِيرُ
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:اللَّهُمَّ بِكَ أَمْسَيْنَا، وَبِكَ أَصْبَحْنَا، وَبِكَ نَحْيَا، وَبِكَ نَمُوتُ، وَإِلَيْكَ الْمَصِيرُ
+TRIGGER:PT0S
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:adhkar-today-18@hazemsaleh98.github.io
+DTSTAMP:20261126T105837
+DTSTART:20261126T123000
+DTEND:20261126T123100
+SUMMARY:أذكار (تجربة)
+DESCRIPTION:اللَّهُمَّ مَا أَصْبَحَ بِي مِنْ نِعْمَةٍ أَوْ بِأَحَدٍ مِنْ خَلْقِكَ فَمِنْكَ وَحْدَكَ لاَ شَرِيكَ لَكَ، فَلَكَ الْحَمْدُ وَلَكَ الشُّكْرُ
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:اللَّهُمَّ مَا أَصْبَحَ بِي مِنْ نِعْمَةٍ أَوْ بِأَحَدٍ مِنْ خَلْقِكَ فَمِنْكَ وَحْدَكَ لاَ شَرِيكَ لَكَ، فَلَكَ الْحَمْدُ وَلَكَ الشُّكْرُ
+TRIGGER:PT0S
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:adhkar-today-19@hazemsaleh98.github.io
+DTSTAMP:20261126T105837
+DTSTART:20261126T123500
+DTEND:20261126T123600
+SUMMARY:أذكار (تجربة)
+DESCRIPTION:اللَّهُمَّ مَا أَمْسَى بِي مِنْ نِعْمَةٍ أَوْ بِأَحَدٍ مِنْ خَلْقِكَ فَمِنْكَ وَحْدَكَ لاَ شَرِيكَ لَكَ، فَلَكَ الْحَمْدُ وَلَكَ الشُّكْرُ
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:اللَّهُمَّ مَا أَمْسَى بِي مِنْ نِعْمَةٍ أَوْ بِأَحَدٍ مِنْ خَلْقِكَ فَمِنْكَ وَحْدَكَ لاَ شَرِيكَ لَكَ، فَلَكَ الْحَمْدُ وَلَكَ الشُّكْرُ
+TRIGGER:PT0S
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:adhkar-today-20@hazemsaleh98.github.io
+DTSTAMP:20261126T105837
+DTSTART:20261126T124000
+DTEND:20261126T124100
+SUMMARY:أذكار (تجربة)
+DESCRIPTION:حَسْبِيَ اللَّهُ لاَ إِلَهَ إِلاَّ هُوَ عَلَيهِ تَوَكَّلتُ وَهُوَ رَبُّ الْعَرْشِ الْعَظِيمِ
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:حَسْبِيَ اللَّهُ لاَ إِلَهَ إِلاَّ هُوَ عَلَيهِ تَوَكَّلتُ وَهُوَ رَبُّ الْعَرْشِ الْعَظِيمِ
+TRIGGER:PT0S
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:adhkar-today-21@hazemsaleh98.github.io
+DTSTAMP:20261126T105837
+DTSTART:20261126T124500
+DTEND:20261126T124600
+SUMMARY:أذكار (تجربة)
+DESCRIPTION:بِسْمِ اللَّهِ الَّذِي لاَ يَضُرُّ مَعَ اسْمِهِ شَيْءٌ فِي الْأَرْضِ وَلاَ فِي السّمَاءِ وَهُوَ السَّمِيعُ الْعَلِيمُ
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:بِسْمِ اللَّهِ الَّذِي لاَ يَضُرُّ مَعَ اسْمِهِ شَيْءٌ فِي الْأَرْضِ وَلاَ فِي السّمَاءِ وَهُوَ السَّمِيعُ الْعَلِيمُ
+TRIGGER:PT0S
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:adhkar-today-22@hazemsaleh98.github.io
+DTSTAMP:20261126T105837
+DTSTART:20261126T125000
+DTEND:20261126T125100
+SUMMARY:أذكار (تجربة)
+DESCRIPTION:رَضِيتُ بِاللَّهِ رَبَّاً، وَبِالْإِسْلاَمِ دِيناً، وَبِمُحَمَّدٍ ﷺ نَبِيًّا
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:رَضِيتُ بِاللَّهِ رَبَّاً، وَبِالْإِسْلاَمِ دِيناً، وَبِمُحَمَّدٍ ﷺ نَبِيًّا
+TRIGGER:PT0S
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:adhkar-today-23@hazemsaleh98.github.io
+DTSTAMP:20261126T105837
+DTSTART:20261126T125500
+DTEND:20261126T125600
+SUMMARY:أذكار (تجربة)
+DESCRIPTION:يَا حَيُّ يَا قَيُّومُ بِرَحْمَتِكَ أَسْتَغيثُ أَصْلِحْ لِي شَأْنِيَ كُلَّهُ وَلاَ تَكِلْنِي إِلَى نَفْسِي طَرْفَةَ عَيْنٍ
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:يَا حَيُّ يَا قَيُّومُ بِرَحْمَتِكَ أَسْتَغيثُ أَصْلِحْ لِي شَأْنِيَ كُلَّهُ وَلاَ تَكِلْنِي إِلَى نَفْسِي طَرْفَةَ عَيْنٍ
+TRIGGER:PT0S
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:adhkar-today-24@hazemsaleh98.github.io
+DTSTAMP:20261126T105837
+DTSTART:20261126T130000
+DTEND:20261126T130100
+SUMMARY:أذكار (تجربة)
+DESCRIPTION:الْحَمْدُ لِلَّهِ وَحْدَهُ، وَالصَّلاَةُ وَالسَّلاَمُ عَلَى مَنْ لاَ نَبِيَّ بَعْدَهُ
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:الْحَمْدُ لِلَّهِ وَحْدَهُ، وَالصَّلاَةُ وَالسَّلاَمُ عَلَى مَنْ لاَ نَبِيَّ بَعْدَهُ
+TRIGGER:PT0S
+END:VALARM
+END:VEVENT
+END:VCALENDAR
